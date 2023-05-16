@@ -15,6 +15,8 @@ public class PlayerMovement : MonoBehaviour
     private float limitInferior;
     public int player_lives = 3;
     public PlayerInput _playerInput;
+    [SerializeField] private AudioClip hitSound; // AudioClip para el sonido de golpe
+    private AudioSource audioSource; // Componente AudioSource para reproducir el sonido
     // Start is called before the first frame update
     void Start()
     {
@@ -41,12 +43,15 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        
+        
         if (other.tag == "Candy" )
         {
             CandyGenerator.instance.ManageCandy(other.gameObject.GetComponent<CandyController>(), this);
         }
         if (other.tag == "Enemy")
         {
+            audioSource.PlayOneShot(hitSound);
             EnemyGenerator.instance.ManageEnemy(other.gameObject.GetComponent<EnemyController>(), this);
         }
     }
