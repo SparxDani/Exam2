@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     private float speed;
     private float limitSuperior;
     private float limitInferior;
-    public int player_lives = 4;
+    public int player_lives = 3;
     public PlayerInput _playerInput;
     // Start is called before the first frame update
     void Start()
